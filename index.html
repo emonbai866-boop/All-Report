@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RDCS CYBER OFFICIAL 👑 </title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+            url("https://empty-silver-9v0rgfsp8c.edgeone.app/IMG-20251229-WA0117.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+
+        marquee {
+            color: #00ff00;
+            font-size: 15px;
+            background-color: black;
+            padding: 10px 0;
+            border-top: 2px solid #00ff00;
+            border-bottom: 2px solid #00ff00;
+        }
+
+        h1 {
+            color: #ccff00;
+            text-shadow: 0 0 10px #00ff00;
+            margin: 15px 0;
+        }
+
+        .red-text {
+            color: red;
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .section-title {
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #00ffea;
+        }
+
+        .btn {
+            display: block;
+            width: 300px;
+            margin: 10px auto;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #111;
+            color: white;
+            border: 2px solid lime;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: lime;
+            color: black;
+            box-shadow: 0 0 10px lime;
+        }
+
+        img {
+            width: 250px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px lime;
+        }
+
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            margin: 10px 5px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #00ffea;
+            color: black;
+        }
+
+        .info-box {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            display: none;
+        }
+
+        .warning {
+            background-color: red;
+            padding: 12px;
+            margin: 30px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* ===== Dialog Overlay Styles ===== */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+        }
+
+        .dialog-overlay.hidden {
+            display: none;
+        }
+
+        .dialog-container {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 30px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+            background-size: 800% 800%;
+            animation: gradientBG 15s ease infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes gradientBG {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+
+        .header-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-area {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: logoGrow 2s ease forwards, logoGlow 2s ease infinite alternate;
+        }
+
+        .logo-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes logoGrow {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes logoGlow {
+            0% { box-shadow: 0 0 10px #fff; }
+            100% { box-shadow: 0 0 20px #ff9a9e; }
+        }
+
+        .divider {
+            width: 2px;
+            height: 60px;
+            background: rgba(255,255,255,0.5);
+            margin: 0 10px;
+        }
+
+        .title-area {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .welcome-badge {
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 8px 15px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .sub-author {
+            color: #eee;
+            font-style: italic;
+            font-size: 13px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .message-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 20px 15px;
+            color: #fff;
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .switch-container {
+            background: rgba(0,0,0,0.2);
+            border-radius: 25px;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 24px;
+            margin-right: 15px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc;
+            transition: .3s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #ff4081;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
+        .switch-label {
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .dialog-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.1s ease, background 0.5s ease;
+        }
+
+        .dialog-btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-close {
+            background: linear-gradient(45deg, #ff6e7f, #bfe9ff);
+        }
+
+        .btn-subscribe {
+            background: linear-gradient(45deg, #42a5f5, #478ed1);
+        }
+
+        .btn-subscribe a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        /* ===== End Dialog Styles ===== */
+    </style>
+</head>
+
+<body>
+
+<!-- ===== Dialog Overlay HTML ===== -->
+<div id="welcomeDialog" class="dialog-overlay">
+    <div class="dialog-container">
+        
+        <div class="header-box">
+            <div class="logo-area">
+                <img src="https://i.postimg.cc/5Xzv2Vfq/image.png" alt="Logo">
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="title-area">
+                <div class="welcome-badge">
+                    Assalamu<br>Alaikum
+                </div>
+                <span class="sub-author">CREATOR EMON KHAN</span>
+            </div>
+        </div>
+
+        <div class="message-box">
+            আসসালামু আলাইকুম RDCS ALL  REPORT LINK  আসার জন্য ধন্যবাদ 
+        </div>
+
+        <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox" id="dontShowAgain">
+                <span class="slider"></span>
+            </label>
+            <span class="switch-label">Don't show again</span>
+        </div>
+
+        <div class="button-group">
+            <button class="dialog-btn btn-close" onclick="closeDialog()">CLOSE</button>
+            <button class="dialog-btn btn-subscribe">
+                <a href="https://t.me/+7GIR2u4T1mZhZDhl" target="_blank">TELEGRAM<br>JOIN</a>
+            </button>
+        </div>
+
+    </div>
+</div>
+<!-- ===== End Dialog Overlay ===== -->
+
+<marquee>🔥 RDCS CYBER OFFICIAL👑 | All Report in One Site | Stay Safe Online 🔥</marquee>
+
+<h1>RDCS CYBER OFFICIAL 👑<br>CREATOR EMON KHAN</h1>
+
+<img src="https://empty-silver-9v0rgfsp8c.edgeone.app/IMG-20251229-WA0117.jpg" alt="RDCS CYBER">
+
+<p class="red-text">All Report in One Site BY EMON KHAN</p>
+
+<!-- Phishing & Malware -->
+<div class="section-title">Phishing & Malware Report</div>
+
+<a href="https://safebrowsing.google.com/safebrowsing/report_phish/" class="btn" target="_blank">Report Phishing Link</a>
+<a href="https://www.microsoft.com/en-us/wdsi/support/report-unsafe-site" class="btn" target="_blank">Report Unsafe Site</a>
+<a href="https://www.virustotal.com/gui/home/upload" class="btn" target="_blank">Virus & Malware Checker</a>
+<a href="https://example.com/phishing" class="btn" target="_blank">Report Phishing Link (Alt)</a>
+
+<!-- Facebook -->
+<div class="section-title">Facebook All Report</div>
+
+<a href="https://m.facebook.com/help/contact/295309487309948" class="btn" target="_blank">Imposter Account Report</a>
+<a href="https://m.facebook.com/help/contact/430253071144967" class="btn" target="_blank">Defamation Report</a>
+<a href="https://m.facebook.com/help/contact/trademarkform" class="btn" target="_blank">Trademark Report</a>
+<a href="https://m.facebook.com/help/contact/516343134409068" class="btn" target="_blank">Violation Report</a>
+<a href="https://m.facebook.com/help/contact/207005222725325" class="btn" target="_blank">Sex Offender Report</a>
+<a href="https://m.facebook.com/help/contact/274459462613911" class="btn" target="_blank">Something Report</a>
+<a href="https://m.facebook.com/help/contact/209046679279097" class="btn" target="_blank">Child Account Report</a>
+<a href="https://m.facebook.com/help/266814220000812/" class="btn" target="_blank">Group Report</a>
+<a href="https://m.facebook.com/help/355811251195044/" class="btn" target="_blank">Page Report</a>
+<a href="https://m.facebook.com/help/327689333983073" class="btn" target="_blank">18+ Report</a>
+<a href="https://m.facebook.com/help/212722115425932" class="btn" target="_blank">Abusive Report</a>
+<a href="https://m.facebook.com/groups/712854522390211/" class="btn" target="_blank">Child Care Report</a>
+<a href="https://m.facebook.com/help/contact/copyrightform" class="btn" target="_blank">Copyright Report</a>
+<a href="https://web.facebook.com/help/contact/278770247037228" class="btn" target="_blank">Indian Grievance Official</a>
+
+<!-- Instagram -->
+<div class="section-title">Instagram All Report</div>
+
+<a href="https://help.instagram.com/contact/653100351788502" class="btn" target="_blank">Defamation Report</a>
+<a href="https://help.instagram.com/contact/636276399721841" class="btn" target="_blank">Threads Report</a>
+<a href="https://help.instagram.com/contact/778323897161220" class="btn" target="_blank">Violations Report</a>
+<a href="https://help.instagram.com/874680996209917/" class="btn" target="_blank">Legal Removal</a>
+<a href="https://help.instagram.com/1359806704386690" class="btn" target="_blank">Grievance Report</a>
+<a href="https://help.instagram.com/370054663112398" class="btn" target="_blank">Imposter Report</a>
+<a href="https://help.instagram.com/contact/334013860059654" class="btn" target="_blank">Sex Offender Report</a>
+<a href="https://help.instagram.com/484700649522086" class="btn" target="_blank">Something Report</a>
+<a href="https://help.instagram.com/517920941588885" class="btn" target="_blank">Child 13 Report</a>
+<a href="https://help.instagram.com/165828726894770" class="btn" target="_blank">Abuse Report</a>
+<a href="https://help.instagram.com/contact/552695131608132" class="btn" target="_blank">Copyright Report</a>
+
+<!-- Tiktok -->
+<div class="section-title">Tiktok All Report</div>
+
+<a href="https://www.tiktok.com/legal/report/us-privacy" class="btn" target="_blank">Account Report</a>
+<a href="https://www.tiktok.com/legal/report/feedback" class="btn" target="_blank">Report a Problem</a>
+<a href="https://support.tiktok.com/en/safety-hc/account-and-user-safety/content-violations-and-bans" class="btn" target="_blank">Content Violation</a>
+<a href="https://support.tiktok.com/en/safety-hc/report-a-problem/report-sexual-abuse" class="btn" target="_blank">Abuse Report</a>
+<a href="https://support.tiktok.com/en/safety-hc/report-a-problem/report-cyberbullying" class="btn" target="_blank">Bullying Report</a>
+<a href="https://www.tiktok.com/legal/report/Copyright" class="btn" target="_blank">Copyright Report</a>
+<a href="https://www.tiktok.com/legal/report/submit-requests" class="btn" target="_blank">Impersonation Report</a>
+<a href="https://www.tiktok.com/legal/report/feedback" class="btn" target="_blank">Under Age Report</a>
+
+<!-- Live Support -->
+<div class="section-title">All Live Chat & Support</div>
+
+<a href="https://www.bkash.com/en/help/livechat" class="btn" target="_blank">Bkash Official</a>
+<a href="https://nagad.com.bd/contact/" class="btn" target="_blank">Nagad Official</a>
+<a href="https://www.grameenphone.com/personal/customer-service/online-customer-service" class="btn" target="_blank">MyGP Official</a>
+<a href="https://www.robi.com.bd/en/personal/support" class="btn" target="_blank">Robi Official</a>
+<a href="https://www.bd.airtel.com/en/support" class="btn" target="_blank">Airtel Official</a>
+<a href="https://banglalinkpabna.blogspot.com/p/chat-with-us.html?m=1" class="btn" target="_blank">Banglalink Official</a>
+<a href="https://www.cid.gov.bd/hot-line-number-for-cyber-complain" class="btn" target="_blank"> EMON KHAN</a>
+
+<!-- Buttons -->
+<div>
+    <button onclick="toggleInfo('developer')">Developer Info</button>
+    <button onclick="toggleInfo('team')">Team Info</button>
+    <button onclick="toggleInfo('support')">Support</button>
+</div>
+
+<!-- Info Boxes -->
+<div id="developer" class="info-box">
+    <h2>Developer Info</h2>
+    <p><strong>Name:</strong> RDCS CYBER OFFICIAL</p>
+    <p><strong>Telegram:</strong> https:/emonkhan564</p>
+    <p><strong>Facebook:</strong>https://www.facebook.com/virtual.top.fmz.magibaz.xx.emon.s3x.king</p>
+</div>
+
+<div id="team" class="info-box">
+    <h2>Team Info</h2>
+    <p>Team Name: RDCS CYBER OFFICIAL </p>
+    <p>Work Type: Online Report, Awareness & Cyber Support</p>
+</div>
+
+<div id="support" class="info-box">
+    <h2>Support</h2>
+    <p>Need Help? Visit our official pages.</p>
+</div>
+
+<div class="warning">
+    ⚠️ Warning: This site is only for awareness and legal reporting purpose.
+</div>
+
+<script>
+function toggleInfo(id) {
+    var all = document.querySelectorAll('.info-box');
+    all.forEach(el => el.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+}
+
+// Dialog functions
+function closeDialog() {
+    var checkbox = document.getElementById('dontShowAgain');
+    var overlay = document.getElementById('welcomeDialog');
+    
+    if (checkbox.checked) {
+        localStorage.setItem('rdcs_dialog_hidden', 'true');
+    }
+    
+    overlay.classList.add('hidden');
+}
+
+// Show dialog on load, unless "Don't show again" was checked
+window.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('rdcs_dialog_hidden') !== 'true') {
+        document.getElementById('welcomeDialog').classList.remove('hidden');
+    } else {
+        document.getElementById('welcomeDialog').classList.add('hidden');
+    }
+});
+</script>
+
+</body>
+</html>
